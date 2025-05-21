@@ -19,7 +19,11 @@ jobs:
         python-version: ["3.13"]
     runs-on: ${{ matrix.os }}
     steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
     - name: Install CMAKE
       run: pip install cmake
     - name: print content of current dir
       run: python -c "import os; print('\n'.join(os.listdir('.')))"
+    - name: run detection script
+      run: python detection.py
