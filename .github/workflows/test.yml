@@ -21,6 +21,6 @@ jobs:
     steps:
     - name: Test
       run: |
-        cd ..
         pip install cmake
+        ls
         python detection.py
