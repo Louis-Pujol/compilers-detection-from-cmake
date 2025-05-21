@@ -24,7 +24,7 @@ endif()
 
 
 # Check for CUDA
-if(CMAKE_CUDA_COMPILER)
+if(DEFINED CUDAToolkit_VERSION)
     message(STATUS "CUDA found, version: ${CUDAToolkit_VERSION}")
     
     # Check nvcc
