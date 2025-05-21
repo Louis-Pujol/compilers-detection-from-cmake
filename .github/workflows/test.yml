@@ -19,7 +19,7 @@ jobs:
         python-version: ["3.13"]
     runs-on: ${{ matrix.os }}
     steps:
-    - name: Test
-      run: |
-        pip install cmake
-        python -c "import os; print('\n'.join(os.listdir('.')))"
+    - name: Install CMAKE
+      run: pip install cmake
+    - name: print content of current dir
+      run: python -c "import os; print('\n'.join(os.listdir('.')))"
