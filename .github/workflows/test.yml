@@ -19,6 +19,6 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
     - name: Test
-        run: |
-          pip install cmake
-          python detection.py
+      run: |
+        pip install cmake
+        python detection.py
