@@ -22,4 +22,4 @@ jobs:
     - name: Test
       run: |
         pip install cmake
-        ls
+        python -c "import os; print('\n'.join(os.listdir('.')))"
