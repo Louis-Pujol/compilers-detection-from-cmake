@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.10)
-project(MyProject LANGUAGES CXX CUDA)
+project(MyProject LANGUAGES CXX)
 
 # Find OpenMP package
 find_package(OpenMP)
