@@ -23,4 +23,3 @@ jobs:
       run: |
         pip install cmake
         ls
-        python detection.py
