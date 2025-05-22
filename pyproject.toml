@@ -1,0 +1,101 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "cmake_detection"
+dynamic = ["version"]
+authors = [
+    {name = "Louis Pujol", email=""}
+]
+description = "Detect compilers with CMake"
+requires-python = ">=3.11"
+dependencies = [
+    "cmake"
+]
+
+
+[project.scripts]
+detect-compilers = "cmake_detection:main"
+
+
+[project.optional-dependencies]
+
+dev = [
+    "pytest",
+    "pytest-cov",
+    "hypothesis",
+    "pre-commit",
+    "furo",
+    "matplotlib",
+    "myst_parser",
+    "numpydoc",
+    "sphinx",
+    "sphinx-copybutton",
+    "sphinx-design",
+    "sphinx-gallery",
+    "sphinx-math-dollar",
+    "sphinx_autodoc_typehints",
+]
+
+
+[tool.hatch]
+version.path = "src/cmake_detection/__init__.py"
+
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = [
+        "-ra",
+        "--durations=10",
+        "--showlocals",
+        "--strict-markers",
+        "--strict-config",
+        "--doctest-modules",
+        "--cov=cmake_detection",
+        "--cov-report=term-missing",
+        "--cov-report=html",
+        "--cov-report=xml"
+        ]
+
+testpaths = ["src/cmake_detection", "tests"]
+
+
+# See: https://learn.scientific-python.org/development/guides/style/#PC190
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.lint]
+extend-select = [
+    "B",        # flake8-bugbear
+    "I",        # isort
+    "ARG",      # flake8-unused-arguments
+    "C4",       # flake8-comprehensions
+    "EM",       # flake8-errmsg
+    "ICN",      # flake8-import-conventions
+    "G",        # flake8-logging-format
+    "PGH",      # pygrep-hooks
+    "PIE",      # flake8-pie
+    "PL",       # pylint
+    "PT",       # flake8-pytest-style
+    "PTH",      # flake8-use-pathlib
+    "RET",      # flake8-return
+    "RUF",      # Ruff-specific
+    "SIM",      # flake8-simplify
+    "T20",      # flake8-print
+    "UP",       # pyupgrade
+    "YTT",      # flake8-2020
+    "EXE",      # flake8-executable
+    "NPY",      # NumPy specific rules
+    "FURB",     # refurb
+    "PYI",      # flake8-pyi
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = ["T201", "PLR2004"] # it is ok to print in tests + magic values in comparison
+"examples/**" = ["T201"] # also ok to print in examples
+
+
+[tool.ruff.format]
+indent-style = "space"
+docstring-code-format = true

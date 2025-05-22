@@ -24,17 +24,17 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
     - name: Install CMAKE
-      run: pip install cmake
-    - name: print content of current dir
-      run: python -c "import os; print('\n'.join(os.listdir('.')))"
+      run: pip install .
     - name: run detection script
-      run: python detection.py
+      run: detect-compilers report.txt
+    - name: print output
+      run: cat report.txt
 
 
   test-with-cuda:
     strategy:
       matrix:
-        os: [ubuntu-22.04, windows-2019]
+        os: [windows-2019]
         python-version: ["3.13"]
     runs-on: ${{ matrix.os }}
     steps:
@@ -48,8 +48,8 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
     - name: Install CMAKE
-      run: pip install cmake
-    - name: print content of current dir
-      run: python -c "import os; print('\n'.join(os.listdir('.')))"
+      run: pip install .
     - name: run detection script
-      run: python detection.py
+      run: detect-compilers report.txt
+    - name: print output
+      run: cat report.txt

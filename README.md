@@ -1,1 +1,3 @@
-# compilers-detection-from-cmake
+# cmake_detection
+
+Detect compilers with CMake
